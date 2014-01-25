@@ -1,5 +1,4 @@
 
-
 package chkrs;
 
 import java.util.Scanner;
