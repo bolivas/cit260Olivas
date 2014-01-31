@@ -1,13 +1,21 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 package chkrs;
 
 import java.util.Scanner;
 
+/**
+ *
+ * @author bensmac
+ */
 public class Chkrs {
     Scanner input = new Scanner(System.in);
     
-    String name;
+    String name = "bbbbbbb";
     String instructions = "This a a java version of checkers. \nI Hope you enjoy playing this game."
 	    + "\nYou can use the help menu any time you want to get help. Have fun!!!";
     int menuItems = 3;
@@ -16,13 +24,21 @@ public class Chkrs {
         {"H", "Display the help menu."},
 	{"Q", "Quit and exit."},
 	};
-    String selection;
+    String selection = "Default";
     
     public static void main(String[] args) {
+	int total = 0;
+	GetPoints getpoints = new GetPoints();
+	total = getpoints.getpoints();
+	if(total >= 0){
+	System.out.println(total);
+	}
 	Chkrs myGame = new Chkrs();
 	myGame.getName();
 	myGame.displayMenu();
 	myGame.action();
+	
+	
 	
     }
     public void getName(){
