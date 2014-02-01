@@ -11,7 +11,7 @@ package chkrs;
  * @author bensmac
  */
 public class Movement {
-    public void regMove(){
+    public void move(){
 	short rowBeforeMove = 3;
 	short colBeforeMove = 3;
 	int rowAfterMove = 0;
