@@ -1,0 +1,50 @@
+package chkrs;
+
+/**
+ *
+ * @author bensmac
+ */
+public class Intel {
+    public int[][] holder = {{0,0,0}};
+    public int[][] bestMove= {{0,0,0}};
+    
+    // this array stores values a,b,c; a is the row value of the piece, b is the column of the piece, c is the weight of the move/moves that it can make 
+    public int[][] moves ={
+	{0,1,1},
+	{0,3,2},
+	{0,5,3},
+	{0,7,4},
+	{1,0,5},
+	{1,2,6},
+	{1,4,7},
+	{1,6,8},
+	{2,1,9},
+	{2,3,10},
+	{2,5,11},
+	{2,7,12}
+    };
+    
+    // this function looks at the piece on the board and orders them according to their move weight
+    // we can use this function for AI. The computer will use this function to make a move base on the pieces weights.
+    public void sortMoves(){
+	for(int i = 0; i < moves.length; i++){
+	    for(int j = 0; j < moves.length-1; j++){
+		if(moves[j][2] < moves[j+1][2]){
+		    holder[0] = moves[j+1];
+		    moves[j+1] = moves[j];
+		    moves[j] = holder[0];
+		}
+	    }
+	}
+	
+	// this function prints the sorted values to the screen.
+	for(int k = 0; k < 12; k++){
+	    System.out.println(moves[k][2]);
+	}
+	
+	// sets the variable bestMove to the highest value in the array moves.
+	bestMove[0] = moves[0];
+	System.out.println("\nbest move: " +bestMove[0][0]+","+bestMove[0][1]+"\n");
+    }
+    
+}
