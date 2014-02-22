@@ -1,3 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package chkrs;
 
 /**
@@ -10,23 +16,107 @@ public class Intel {
     
     // this array stores values a,b,c; a is the row value of the piece, b is the column of the piece, c is the weight of the move/moves that it can make 
     public int[][] moves ={
-	{0,1,1},
-	{0,3,2},
-	{0,5,3},
-	{0,7,4},
-	{1,0,5},
-	{1,2,6},
-	{1,4,7},
-	{1,6,8},
-	{2,1,9},
-	{2,3,10},
-	{2,5,11},
-	{2,7,12}
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
     };
+    
+    public static String[][] brd = {
+        {" ","O"," ","O"," ","O"," ","O"}, 
+        {"O"," ","O"," ","O"," ","O"," "},
+        {" ","O"," ","O"," ","O"," ","O"},
+	{" "," "," "," "," "," "," "," "},
+	{" "," "," "," "," "," "," "," "},
+	{"X"," ","X"," ","X"," ","X"," "},
+        {" ","X"," ","X"," ","X"," ","X"},
+	{"X"," ","X"," ","X"," ","X"," "},
+	};
+    int count = 0;
+    // what you are searching for
+    String checks = "X";
+    // this function searches the board and finds all pieces that are an the board.
+    public void findMovablePieces(){
+	for(int i = 0; i < 8; i++){
+	    for(int j = 0; j < 8; j++){
+		//if the piece is a match then it stores the coordinates in an array.
+		if(brd[i][j] == checks){
+		    moves[count][0] = i;
+		    moves[count][1] = j;
+		    count++;
+		}
+	    }
+	}
+	//prints the array values to the screen
+	for(int k = 0; k < 12; k++){
+	    System.out.println(moves[k][0]+","+moves[k][1]+","+moves[k][2]);
+	}
+    }
+    
+    public int[][] movesPossible ={
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+	{0,0,0},
+    };
+    int r = 0;
+    int c = 0;
+    int count2 = 0;
+    public void checkRegularMove(){
+	for(int i = 0; i < 12; i++){
+	    if((moves[i][0] != 0)||(moves[i][1] != 0)){
+		r = moves[i][0];
+		c = moves[i][1];
+		if(checks == "X"){
+		    if((c != 0) && (r != 0)&&(brd[r-1][c-1] == " ")) {
+			movesPossible[count][0] = r-1;
+			movesPossible[count][1] = c-1;
+			movesPossible[count][2] = 1;
+		    }
+		    if((c != 7) && (r != 0)&&(brd[r-1][c+1] == " ")){
+			movesPossible[count][0] = r-1;
+			movesPossible[count][1] = c+1;
+			movesPossible[count][2] = 1;
+		    }
+		}
+		if(checks == "O"){
+		    if((brd[r+1][c-1] == " ") && (c != 0) && (r != 7)){
+			movesPossible[count][0] = r+1;
+			movesPossible[count][1] = c-1;
+			movesPossible[count][2] = 1;
+		    }
+		    if((brd[r+1][c+1] == " ") && (c != 7) && (r != 7)){
+			movesPossible[count][0] = r+1;
+			movesPossible[count][1] = c+1;
+			movesPossible[count][2] = 1;
+		    }
+		}
+	    }
+	}
+	for(int k = 0; k < 12; k++){
+	    System.out.println(movesPossible[k][0]+","+movesPossible[k][1]+","+movesPossible[k][2]);
+	}
+    }
     
     // this function looks at the piece on the board and orders them according to their move weight
     // we can use this function for AI. The computer will use this function to make a move base on the pieces weights.
-    public void sortMoves(){
+    public void sortMovesHighToLow(){
 	for(int i = 0; i < moves.length; i++){
 	    for(int j = 0; j < moves.length-1; j++){
 		if(moves[j][2] < moves[j+1][2]){
@@ -46,5 +136,14 @@ public class Intel {
 	bestMove[0] = moves[0];
 	System.out.println("\nbest move: " +bestMove[0][0]+","+bestMove[0][1]+"\n");
     }
-    
+   
+  public int[] howMany = {1,2,5,4,6,7,0,0,0,0,0,0,0,0,0,0,0};
+  int total = 0;
+  public void takeTime(){
+      for(int row: howMany){
+	  total += row; 
+	  }
+      total -= howMany[0];
+      total -= howMany[1];
+  }
 }
