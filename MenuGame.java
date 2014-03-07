@@ -1,5 +1,4 @@
 
-
 package chkrs;
 
 import java.util.Scanner;
@@ -7,24 +6,27 @@ import java.util.Scanner;
 
 public class MenuGame {
     Scanner input = new Scanner(System.in);
-    
     String instructions = "What dificulty of computer would you like to play?";
     String selection = "Default";
-    int menuItems = 4;
+    int menuItems = 5;
+    int difficulty = 0;
     boolean valid = false;
     public String[][] menus = {
-        {"H", "Hard"}, 
-        {"M", "Medium"},
-	{"E", "Easy"},
+        {"3", "Hard"}, 
+        {"2", "Medium"},
+	{"1", "Easy"},
 	{"R", "Return to previous menu"},
+	{"H", "Help"},
 	};
    
-    private MenuGameControl gameMenuControl = new MenuGameControl();
-    private Chkrs returnTo = new Chkrs();
+    MenuPlaying menuPlaying = new MenuPlaying();
+    MenuGameHelp menuGameHelp = new MenuGameHelp();
+    
+    
     public MenuGame(){
 	
     }
-    public void displayMenu(){
+    private void displayMenu(){
 	System.out.println(this.instructions+"\n");
 	
 	for(int i = 0; i < this.menuItems; i++){
@@ -39,30 +41,42 @@ public class MenuGame {
 	
 	if(valid){
 	    switch(selection){
-		case "H": this.gameMenuControl.hard();
+		case "3": 
+		    /* this sets the dificulty variable*/
+		    this.difficulty = 3;
+		    this.menuPlaying.getInput();
 		    break;
-		case "M": this.gameMenuControl.medium();
+		case "2": 
+		    this.difficulty = 2;
+		    this.menuPlaying.getInput();
 		    break;
-		case "E": this.gameMenuControl.easy();
+		case "1": 
+		    this.difficulty = 1;
+		    this.menuPlaying.getInput();
 		    break;
-		case "R": this.returnTo.displayMenu();
+		case "R": 
+		    break;
+		case "H": this.menuGameHelp.getInput();
 		    break;
 		}
 	}
 	}while (valid != true);
     }
     
-    public boolean getCommand(String string){
+    /**
+     *
+     * @param string
+     * @return
+     */
+    private boolean getCommand(String string){
 	
-	
-	boolean valid = false;
 	do{
 	    selection = input.next().trim().toUpperCase();
 	    valid = validateCommand(selection);
 	    if(!valid){
 		new Error().displayError("Invalid command. Please enter a valid command");
 	    }
-	}while (!valid);
+	}while (valid);
 	return true;
     }
     
