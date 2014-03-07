@@ -17,11 +17,11 @@ public class SelectRow {
     boolean valid = false;
     private final static String[] validInputs = {"0","1","2","3","4","5","6","7"};
     String selection;
-    int converted;
+    public int converted;
     public SelectRow(){
 	
     }
-    public void getInput(){
+    public int getInput(){
 	while(!valid){
 	System.out.println(instructions);
 	selection = input.next();
@@ -30,6 +30,7 @@ public class SelectRow {
 		converted = Integer.parseInt(selection);
 	    }
 	}
+	return converted;
     }
     private boolean validateCommand(String selection){
 	for(int i = 0;i < 8;i++){
