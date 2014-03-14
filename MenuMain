@@ -1,0 +1,33 @@
+
+package chkrs;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author bensmac
+ */
+public class MenuMain extends Menu{
+    private static final String menus[][] = {
+        {"1", "New Game"}, 
+	{"2", "Help Menu"},
+	};
+    private static String instructions ="Welcome to Checkers! Plese select an option below to begin.";
+    private static int menuItems = 2;
+    
+    MenuMain(){
+	super(instructions,menuItems,menus);
+    }
+    @Override
+    public void executeCommands(boolean valid){
+	if(valid){
+	    switch(selection){
+		case "1": System.out.println("NNNNNN");//menuPlaying.getInput();
+		    break;
+		case "2": System.out.println("HHHHHH");//menuMainHelp.getInput();
+		    break;
+                
+		}
+	}
+    }
+}
