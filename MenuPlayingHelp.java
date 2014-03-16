@@ -12,13 +12,9 @@ import java.util.Scanner;
  *
  * @author bensmac
  */
-public class MenuPlayingHelp {
-  Scanner input = new Scanner(System.in);
-    
-    String instructions = "What can we help you with?";
-    String selection= "Default";
-    int menuItems = 4;
-    boolean valid = false;
+public class MenuPlayingHelp extends Menu{
+    private static String instructions = "What can we help you with?";
+    private static int menuItems = 4;
     private final static String[][] menus = {
         {"I", "Game play instructions"}, 
         {"N", "Menu Navigation"},
@@ -26,60 +22,23 @@ public class MenuPlayingHelp {
 	{"R", "Return to previous menu"},
 	};
     
-    MenuPlayingHelpControl menuPlayingHelpControl = new MenuPlayingHelpControl();
-    
-    
     public MenuPlayingHelp(){
-	
+	super(instructions,menuItems,menus);
     }
    
-    public void displayMenu(){
-	System.out.println(this.instructions+"\n");
-	
-	for(int i = 0; i < this.menuItems; i++){
-	    System.out.println(MenuPlayingHelp.menus[i][0]+ "   " +MenuPlayingHelp.menus[i][1]);
-	}
-    }
-    public void getInput(){
-	do{
-	displayMenu();
-	System.out.println("\nPlease make your selection now.");
-	valid = getCommand(selection);
-	
+    @Override
+     public void executeCommands(boolean valid){
 	if(valid){
 	    switch(selection){
-		case "I": this.menuPlayingHelpControl.instructions();
+		case "I": System.out.println("NNNNN1");//this.menuPlayingHelpControl.instructions();
 		    break;
-		case "N": this.menuPlayingHelpControl.navigation();
+		case "N": System.out.println("NNNNN2");//this.menuPlayingHelpControl.navigation();
 		    break;
-		case "G": this.menuPlayingHelpControl.general();
+		case "G": System.out.println("NNNNN3");//this.menuPlayingHelpControl.general();
 		    break;
-		case "R": 
+		case "R": System.out.println("NNNNN4");//this.menuPlayingHelpControl.general();
 		    break;
 		}
 	}
-	}while (valid != true);
-    }
-    
-    public boolean getCommand(String string){
-
-	do{
-	    selection = input.next().trim().toUpperCase();
-	    valid = validateCommand(selection);
-	    if(!valid){
-		new Error().displayError("Invalid command. Please enter a valid command");
-	    }
-	}while (!valid);
-	return true;
-    }
-    
-    private boolean validateCommand(String command){
-	
-	for(String[] row : MenuPlayingHelp.menus){
-	    if(row[0].equals(selection)){
-		return true;
-	    }
-	}
-	return false;
     }
 }
