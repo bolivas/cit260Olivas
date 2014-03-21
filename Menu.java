@@ -4,15 +4,16 @@
  * and open the template in the editor.
  */
 
-package chkrs;
+package cit260.checkers.menus;
 
+import chkrs.Error;
 import java.util.Scanner;
 
 /**
  *
  * @author bensmac
  */
-public abstract class Menu {
+public abstract class Menu implements DisplayInfo, EnterInfo{
     Scanner input = new Scanner(System.in);
     public static String instructions;
     String selection = "Default";
@@ -20,7 +21,7 @@ public abstract class Menu {
     boolean valid = false;
     private static String menus[][];
     
-    Menu(String i, int mi, String[][] m){
+    public Menu(String i, int mi, String[][] m){
 	instructions = i;
 	menuItems = mi;
 	menus = m;
