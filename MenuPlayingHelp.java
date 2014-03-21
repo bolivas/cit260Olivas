@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package chkrs;
+package cit260.checkers.menus;
 
 import java.util.Scanner;
 
@@ -40,5 +40,15 @@ public class MenuPlayingHelp extends Menu{
 		    break;
 		}
 	}
+    }
+
+    @Override
+    public String DisplyInfo(boolean valid) {
+	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getInfo() {
+	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
