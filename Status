@@ -1,0 +1,22 @@
+package cit260.checkers.menus;
+
+/**
+ *
+ * @author bensmac
+ */
+public enum Status {
+    WELCOME ("WELCOME"),
+    NEW_GAME ("NEW_GAME"),
+    EXIT ("EXIT");
+    
+    String value;
+    
+    Status(String value){
+	this.value = value;
+    }
+    
+    public String getValue(){
+	return value;
+    }
+    
+}
