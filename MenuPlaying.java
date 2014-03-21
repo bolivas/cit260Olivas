@@ -1,5 +1,5 @@
 
-package chkrs;
+package cit260.checkers.menus;
 
 import java.util.Scanner;
 
@@ -16,7 +16,7 @@ public class MenuPlaying extends Menu{
 	{"H", "Help"},
 	};
     
-    MenuPlaying(){
+    public MenuPlaying(){
 	super(instructions,menuItems,menus);
     }
    @Override
@@ -30,4 +30,14 @@ public class MenuPlaying extends Menu{
             }
 	}
     }	
+
+    @Override
+    public String DisplyInfo(boolean valid) {
+	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getInfo() {
+	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
