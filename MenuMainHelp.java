@@ -1,31 +1,68 @@
-package chkrs;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
+package cit260.checkers.menus;
+
+import chkrs.Error;
 import java.util.Scanner;
 
-public class MenuMainHelp extends Menu{
+/**
+ *
+ * @author bensmac
+ */
+public abstract class Menu implements DisplayInfo, EnterInfo{
+    Scanner input = new Scanner(System.in);
+    public static String instructions;
+    String selection = "Default";
+    int menuItems;
+    boolean valid = false;
+    private static String menus[][];
     
-    private static final String instructions = "What can we help you with?";
-    private static int menuItems = 2;
-    private final static String[][] menus = {
-        {"1", "Game play instructions"}, 
-        {"2", "Menu Navigation"},
-	};
-    
-    MenuMainHelp(){
-	super(instructions,menuItems,menus);
-	
+    public Menu(String i, int mi, String[][] m){
+	instructions = i;
+	menuItems = mi;
+	menus = m;
     }
     
-   @Override
-   public void executeCommands(boolean valid){
-	if(valid){
-	    switch(selection){
-		case "1": System.out.println("NNNNNN");//menuPlaying.getInput();
-		    break;
-		case "2": System.out.println("HHHHHH");//menuMainHelp.getInput();
-		    break;
-                
-		}
+    public void displayMenu(){
+	System.out.println(this.instructions+"\n");
+
+	for(int i = 0; i < this.menuItems; i++){
+	    System.out.println(menus[i][0]+ "   " +menus[i][1]);
 	}
+    }
+    public void getInput(){
+	do{
+	displayMenu();
+	System.out.println("\nPlease make your selection now.");
+	valid = getCommand(selection);
+	
+	}while (valid != true);
+	executeCommands(valid);
+    }
+    public abstract void executeCommands(boolean valid);
+    
+    public boolean getCommand(String string){
+	
+	do{
+	    selection = input.next().trim().toUpperCase();
+	    valid = validateCommand(selection);
+	    if(!valid){
+		new Error().displayError("Invalid command. Please enter a valid command");
+	    }
+	}while (!valid);
+	return true;
+    }
+    private boolean validateCommand(String command){
+
+	for(String[] row : menus){
+	    if(row[0].equals(selection)){
+		return true;
+	    }
+	}
+	return false;
     }
 }
