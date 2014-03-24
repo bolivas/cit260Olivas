@@ -4,33 +4,53 @@
  * and open the template in the editor.
  */
 
-package chkrs;
+package intel;
+
+import chkrs.Board;
 
 /**
  *
  * @author bensmac
  */
 public class Intel {
-     
-    
     int r = 0;
     int c = 0;
     int ir  = 0;
     int ic  = 0;
-    
-    
-  
+    int[][] holdValues = {
+	{0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    };
+    int count = 0;
+    int[][] allMoves = {
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    };
     public void run(){
+	// sets all the values of allMoves to zero
 	for(int oo = 0; oo < 12; oo++){
 	    for(int jj = 0; jj < 18; jj++){
 		    allMoves[oo][jj] = 0; 
 	    }
 	}
+	// runs the method movable pieces which checks the board for movable pieces
 	this.movablePieces();
+	    // filling allMoves and puts them in the 0 and 1 position of allMoves
 	    for(int i = 0; i < 12; i++){
 		r = allMoves[i][0];
 		c = allMoves[i][1];
 		count = 0;
+		//clearing hold values
 		holdValues[0][0] = 0;
 		holdValues[0][1] = 0;
 		for(int ii = 0; ii < 16; ii++){
@@ -60,26 +80,8 @@ public class Intel {
 	}
     
  
-    int[][] holdValues = {
-	{0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    };
-    int count = 0;
-    int[][] allMoves = {
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    };
     
+    // populates the allMoves with movable values
     public void movablePieces(){
 	int count1 = 0;
 	for(int i = 0; i < 8; i++){
