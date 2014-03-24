@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 
-package chkrs;
+package intel;
+
+import chkrs.Board;
+
 /**
  *
  * @author bensmac
