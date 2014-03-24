@@ -1,12 +1,12 @@
 
 package chkrs;
 
-public class Board {
+public class Board implements Brd {
     public static String[][] brd = {
         {" ","O"," ","O"," ","O"," ","O"}, 
         {"O"," ","O"," ","O"," ","O"," "},
         {" ","O"," ","O"," ","O"," ","O"},
-	      {" "," "," "," "," "," "," "," "},
+	{" "," "," "," "," "," "," "," "},
 	{" "," "," "," "," "," "," "," "},
 	{"X"," ","X"," ","X"," ","X"," "},
         {" ","X"," ","X"," ","X"," ","X"},
@@ -22,8 +22,9 @@ public class Board {
 	{" ----","----","----","----","----","----","----","-----"},
 	{" ----","----","----","----","----","----","----","-----"},
 	};
-    public static void displayBoard() {
+    public void displayBoard() {
 	
+     title();	
      for (int i = 0; i < 8; i++) {
             System.out.println("\t"+i+"\t"+" | " + brd[i][0] + " | " + brd[i][1] + " | " + brd[i][2] + " | " + brd[i][3] + " | " + brd[i][4] + " | " + brd[i][5] + " | " + brd[i][6] + " | " + brd[i][7]+ " | ");
 	    System.out.println("\t"+"\t"+lines[i][0]  + lines[i][1]  + lines[i][2]  + lines[i][3]  + lines[i][4]  + lines[i][5]  + lines[i][6]  + lines[i][7]);
@@ -32,4 +33,12 @@ public class Board {
 	}
      }
     }
+
+    @Override
+    public String title() {
+	System.out.println("Checkers Board");
+	return null;
+    }
+
+   
 }
