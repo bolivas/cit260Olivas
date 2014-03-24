@@ -4,24 +4,27 @@
  * and open the template in the editor.
  */
 
-package chkrs;
+package select;
 
+import chkrs.Error;
 import java.util.Scanner;
 /**
  *
  * @author bensmac
  */
 public class SelectRow {
-    Scanner input = new Scanner(System.in);
-    String instructions = "Please Select the row of the piece you would like to move";
-    boolean valid = false;
+    private static Scanner input = new Scanner(System.in);
+    private static String instructions = "Please Select the row of the piece you would like to move";
+    private static boolean valid = false;
     private final static String[] validInputs = {"0","1","2","3","4","5","6","7"};
-    String selection;
-    public int converted;
+    private static String selection;
+    private static int converted;
+    
     public SelectRow(){
 	
     }
-    public int getInput(){
+    
+    public int getStuff(){
 	while(!valid){
 	System.out.println(instructions);
 	selection = input.next();
