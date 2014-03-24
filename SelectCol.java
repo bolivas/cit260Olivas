@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package chkrs;
+package select;
 
+import chkrs.Error;
 import java.io.Serializable;
 import java.util.Scanner;
 /**
@@ -13,12 +14,12 @@ import java.util.Scanner;
  * @author bensmac
  */
 public class SelectCol implements Serializable{
-    Scanner input = new Scanner(System.in);
-    private String instructions = "Please Select the column of the piece you would like to move";
-    private boolean valid = false;
+    private static Scanner input = new Scanner(System.in);
+    private static String instructions = "Please Select the column of the piece you would like to move";
+    private static boolean valid = false;
     private final static String[] validInputs = {"A","B","C","D","E","F","G","H","a","b","c","d","e","f","g","h"};
-    private String selection;
-    private int converted;
+    private static String selection;
+    private static int converted;
     
     public SelectCol(){
 	
@@ -66,65 +67,65 @@ public class SelectCol implements Serializable{
     
     
     
-    public int getStuff(){
-	while(!this.valid){
-	System.out.println(this.instructions);
-	this.selection = input.next();
-	this.valid = validateCommand(this.selection);
-	    if(this.valid){
-		this.converted = convertAlpha(this.selection);
+    public static int getStuff(){
+	while(!SelectCol.valid){
+	System.out.println(SelectCol.instructions);
+	SelectCol.selection = input.next();
+	SelectCol.valid = validateCommand(SelectCol.selection);
+	    if(SelectCol.valid){
+		SelectCol.converted = convertAlpha(SelectCol.selection);
 	    }
 	}
-	return this.converted;
+	return SelectCol.converted;
     }
-    private boolean validateCommand(String selection){
+    private static boolean validateCommand(String selection){
 	for(int i = 0;i < 16;i++){
-	    if(this.validInputs[i].equals(selection)){
-		this.valid = true;
+	    if(SelectCol.validInputs[i].equals(selection)){
+		SelectCol.valid = true;
 	    }
 	}
-	if(!this.valid){
+	if(!SelectCol.valid){
 	    new Error().displayError("Invalid command. Please enter a valid command");
 	}
-	return this.valid;
+	return SelectCol.valid;
     }
-    private int convertAlpha(String selection){
+    private static int convertAlpha(String selection){
 	switch(selection){
-	    case "A": this.converted = 0;
+	    case "A": SelectCol.converted = 0;
 		break;
-	    case "B": this.converted = 1;
+	    case "B": SelectCol.converted = 1;
 		break;
-	    case "C": this.converted = 2;
+	    case "C": SelectCol.converted = 2;
 		break;
-	    case "D": this.converted = 3;
+	    case "D": SelectCol.converted = 3;
 		break;
-	    case "E": this.converted = 4;
+	    case "E": SelectCol.converted = 4;
 		break;
-	    case "F": this.converted = 5;
+	    case "F": SelectCol.converted = 5;
 		break;
-	    case "G": this.converted = 6;
+	    case "G": SelectCol.converted = 6;
 		break;
-	    case "H": this.converted = 7;
+	    case "H": SelectCol.converted = 7;
 		break;
-	    case "a": this.converted = 0;
+	    case "a": SelectCol.converted = 0;
 		break;
-	    case "b": this.converted = 1;
+	    case "b": SelectCol.converted = 1;
 		break;
-	    case "c": this.converted = 2;
+	    case "c": SelectCol.converted = 2;
 		break;
-	    case "d": this.converted = 3;
+	    case "d": SelectCol.converted = 3;
 		break;
-	    case "e": this.converted = 4;
+	    case "e": SelectCol.converted = 4;
 		break;
-	    case "f": this.converted = 5;
+	    case "f": SelectCol.converted = 5;
 		break;
-	    case "g": this.converted = 6;
+	    case "g": SelectCol.converted = 6;
 		break;
-	    case "h": this.converted = 7;
+	    case "h": SelectCol.converted = 7;
 		break;
 	}
 	
-	return this.converted;
+	return SelectCol.converted;
     }
     
 }
