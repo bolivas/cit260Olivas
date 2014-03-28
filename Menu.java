@@ -6,8 +6,11 @@
 
 package cit260.checkers.menus;
 
+import Exception.MenuException;
 import chkrs.Error;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,15 +37,20 @@ public abstract class Menu implements DisplayInfo, EnterInfo{
 	    System.out.println(menus[i][0]+ "   " +menus[i][1]);
 	}
     }
-    public void getInput(){
+    public void getInput() throws MenuException{
 	do{
 	displayMenu();
 	System.out.println("\nPlease make your selection now.");
+	try{
 	valid = getCommand(selection);
-	
+	}
+	catch(NumberFormatException e){
+	    throw new MenuException("You did not enter a number value. Please enter another selection");
+	}
 	}while (valid != true);
 	executeCommands(valid);
     }
+    
     public abstract void executeCommands(boolean valid);
     
     public boolean getCommand(String string){
