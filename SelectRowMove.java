@@ -6,6 +6,7 @@
 
 package select;
 
+import Exception.SelectException;
 import chkrs.Error;
 import java.util.Scanner;
 
@@ -67,13 +68,25 @@ public class SelectRowMove {
     
     
     
-    public int getStuff(){
+    public int getStuff() throws SelectException{
 	while(!valid){
 	System.out.println(instructions);
 	selection = input.next();
-	valid = validateCommand(selection);
+	try{
+	    valid = validateCommand(selection);
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new SelectException("An error has occured.");
+	}
+	
 	    if(valid){
+		try{
 		converted = Integer.parseInt(selection);
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new SelectException("An error has occured.");
+	}
+		
 	    }
 	}
 	return converted;
