@@ -6,6 +6,7 @@
 
 package intel;
 
+import Exception.IntelException;
 import chkrs.Board;
 
 /**
@@ -21,7 +22,7 @@ public class Intel2 {
     int ic  = 0;
    
     int holder = 0;
-    public void run(int a, int b, int ia, int ib){
+    public void run(int a, int b, int ia, int ib) throws IntelException{
 	r = a;
 	c = b;
 	ir = ia;
@@ -32,11 +33,35 @@ public class Intel2 {
 	    holdValues[1][ii] = 0;
 	}
 	count = 0;
-	this.checkAPiece();
-	this.printMoves();
-	this.compareValues();
-	System.out.println("holder: " + holder);
-	this.checkMoveOk();
+	
+	try{
+	    this.checkAPiece();
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new IntelException("An error has occured.");
+	}
+	
+	try{
+	    this.printMoves();
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new IntelException("An error has occured.");
+	}
+	
+	try{
+	    this.compareValues();
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new IntelException("An error has occured.");
+	}
+	
+	try{
+	    this.checkMoveOk();
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new IntelException("An error has occured.");
+	}
+	
 		
     }
     int[][] holdValues = {
