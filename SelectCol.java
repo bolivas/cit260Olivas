@@ -6,6 +6,7 @@
 
 package select;
 
+import Exception.SelectException;
 import chkrs.Error;
 import java.io.Serializable;
 import java.util.Scanner;
@@ -67,13 +68,25 @@ public class SelectCol implements Serializable{
     
     
     
-    public static int getStuff(){
+    public static int getStuff() throws SelectException{
 	while(!SelectCol.valid){
 	System.out.println(SelectCol.instructions);
 	SelectCol.selection = input.next();
-	SelectCol.valid = validateCommand(SelectCol.selection);
+	try{
+	    SelectCol.valid = validateCommand(SelectCol.selection);
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new SelectException("An error has occured.");
+	}
+	
 	    if(SelectCol.valid){
-		SelectCol.converted = convertAlpha(SelectCol.selection);
+		try{
+	    SelectCol.converted = convertAlpha(SelectCol.selection);
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new SelectException("An error has occured.");
+	}
+		
 	    }
 	}
 	return SelectCol.converted;
