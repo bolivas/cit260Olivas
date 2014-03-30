@@ -6,6 +6,7 @@
 
 package intel;
 
+import Exception.IntelException;
 import chkrs.Board;
 
 /**
@@ -36,7 +37,7 @@ public class Intel {
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     };
-    public void run(){
+    public void run() throws IntelException{
 	// sets all the values of allMoves to zero
 	for(int oo = 0; oo < 12; oo++){
 	    for(int jj = 0; jj < 18; jj++){
@@ -44,9 +45,16 @@ public class Intel {
 	    }
 	}
 	// runs the method movable pieces which checks the board for movable pieces
+	try{
 	this.movablePieces();
-	    // filling allMoves and puts them in the 0 and 1 position of allMoves
-	    for(int i = 0; i < 12; i++){
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new IntelException("An error has occured.");
+	}
+	// filling allMoves and puts them in the 0 and 1 position of allMoves
+	    
+	try{
+	for(int i = 0; i < 12; i++){
 		r = allMoves[i][0];
 		c = allMoves[i][1];
 		count = 0;
@@ -61,6 +69,12 @@ public class Intel {
 		    allMoves[i][j+2] = holdValues[1][j]; 
 		}
 	    }
+	}
+	catch(IndexOutOfBoundsException e){
+	    throw new IntelException("An error has occured.");
+	}
+	
+	try{
 	    for(int l = 0;l < 12; l++){
 		System.out.print("{");
 		for(int m = 0;m < 18; m++){
@@ -68,6 +82,11 @@ public class Intel {
 		} 
 		System.out.println("}");
 	    }
+	    }
+	catch(IndexOutOfBoundsException e){
+	    throw new IntelException("An error has occured.");
+	}
+	try{  
 	    for(int k = 0; k < 12; k++){
 		if(allMoves[k][2] != 0){
 		    r= allMoves[k][0];
@@ -77,6 +96,11 @@ public class Intel {
 		    break;
 		}
 	    }
+	  }
+	catch(IndexOutOfBoundsException e){
+	    throw new IntelException("An error has occured.");
+	}  
+	    
 	}
     
  
