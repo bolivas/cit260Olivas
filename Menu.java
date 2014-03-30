@@ -53,11 +53,16 @@ public abstract class Menu implements DisplayInfo, EnterInfo{
     
     public abstract void executeCommands(boolean valid);
     
-    public boolean getCommand(String string){
+    public boolean getCommand(String string) throws MenuException{
 	
 	do{
 	    selection = input.next().trim().toUpperCase();
+	    try{
 	    valid = validateCommand(selection);
+	    }
+	    catch(NumberFormatException e){
+		throw new MenuException("Invalid command. Please enter a valid command");
+	    }
 	    if(!valid){
 		new Error().displayError("Invalid command. Please enter a valid command");
 	    }
