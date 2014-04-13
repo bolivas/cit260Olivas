@@ -79,6 +79,11 @@ public MainFrame() {
         });
 
         jbHelp.setText("Help");
+        jbHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbHelpActionPerformed(evt);
+            }
+        });
 
         jbExit.setText("Exit");
         jbExit.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +174,7 @@ public MainFrame() {
 
         pack();
     }// </editor-fold>                        
-
+    //Help help = new Help();
     private void jbExitActionPerformed(java.awt.event.ActionEvent evt) {                                       
 	dispose();
 	
@@ -178,7 +183,12 @@ public MainFrame() {
     private void jbNewGameActionPerformed(java.awt.event.ActionEvent evt) {                                          
 	EnterPlayerName enterName = new EnterPlayerName();
 	enterName.setVisible(rootPaneCheckingEnabled);
+	dispose();
     }                                         
+
+    private void jbHelpActionPerformed(java.awt.event.ActionEvent evt) {                                       
+	// TODO add your handling code here:
+    }                                      
 
     /**
      * @param args the command line arguments
