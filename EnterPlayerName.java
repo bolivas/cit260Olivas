@@ -123,7 +123,8 @@ public class EnterPlayerName extends javax.swing.JFrame {
 
     private void jbContinueActionPerformed(java.awt.event.ActionEvent evt) {                                           
 	BoardGui game = new BoardGui();
-	game.setVisible(rootPaneCheckingEnabled);// TODO add your handling code here:
+	game.setVisible(rootPaneCheckingEnabled);
+	dispose();// TODO add your handling code here:
     }                                          
 
     /**
