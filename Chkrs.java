@@ -2,6 +2,7 @@
 package chkrs;
 
 import Exception.MenuException;
+import cit260.checkers.frames.MainFrame;
 import cit260.checkers.menus.MenuMain;
 import java.io.IOException;
 import static java.lang.System.in;
@@ -12,11 +13,27 @@ import static java.lang.System.in;
  * @author bensmac
  */
 public class Chkrs {
+    
+    
     public static void main(String[] args) throws MenuException, IOException {
+	
+    MainFrame mainFrame = new MainFrame();
+    mainFrame.setVisible(true);
+   
+//try {
+	    
+	//}
+	//catch (Throwable ex){
+	  // new Error().displayError("Unexpected Error:" + ex.getMessage());
+	   //new Error().displayError(ex.getStackTrace().toString());
+	//}
+	//finally {
+	  // in.close();
+	
 	try{
-	MenuMain mm;
-	mm = new MenuMain();
-	mm.getInput();
+	// MenuMain mm;
+	// mm = new MenuMain();
+	// mm.getInput();
 	
 	/*int r = 0;
 	int c = 0;
