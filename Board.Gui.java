@@ -8,6 +8,7 @@ package cit260.checkers.frames;
 
 import Exception.IntelException;
 import chkrs.Board;
+import intel.Intel;
 import intel.Moves;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,6 +74,7 @@ public class BoardGui extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton34 = new javax.swing.JButton();
+        jbNewGame = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -203,6 +205,7 @@ public class BoardGui extends javax.swing.JFrame {
         f2.setBackground(new java.awt.Color(255, 255, 255));
         f2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         f2.setText("O");
+        f2.setToolTipText("");
         f2.setMargin(new java.awt.Insets(0, 0, 0, 0));
         f2.setPreferredSize(new java.awt.Dimension(50, 50));
         f2.setSize(new java.awt.Dimension(50, 50));
@@ -435,6 +438,7 @@ public class BoardGui extends javax.swing.JFrame {
         c7.setBackground(new java.awt.Color(255, 255, 255));
         c7.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         c7.setText("X");
+        c7.setToolTipText("");
         c7.setMargin(new java.awt.Insets(0, 0, 0, 0));
         c7.setPreferredSize(new java.awt.Dimension(50, 50));
         c7.setSize(new java.awt.Dimension(50, 50));
@@ -484,7 +488,6 @@ public class BoardGui extends javax.swing.JFrame {
                         .addGroup(BoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BoardLayout.createSequentialGroup()
                                 .addComponent(b2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGap(56, 56, 56)
                                 .addComponent(d2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(62, 62, 62)
@@ -493,7 +496,6 @@ public class BoardGui extends javax.swing.JFrame {
                                 .addComponent(h2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BoardLayout.createSequentialGroup()
                                 .addComponent(b4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGap(56, 56, 56)
                                 .addComponent(d4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(62, 62, 62)
@@ -502,7 +504,6 @@ public class BoardGui extends javax.swing.JFrame {
                                 .addComponent(h4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BoardLayout.createSequentialGroup()
                                 .addComponent(b6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGap(56, 56, 56)
                                 .addComponent(d6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(62, 62, 62)
@@ -565,8 +566,8 @@ public class BoardGui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(b2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(f2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(BoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(f2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(h2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(d2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -612,6 +613,18 @@ public class BoardGui extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton34.setText("Exit");
+        jButton34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton34ActionPerformed(evt);
+            }
+        });
+
+        jbNewGame.setText("New Game");
+        jbNewGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNewGameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
         jPanel34.setLayout(jPanel34Layout);
@@ -622,7 +635,9 @@ public class BoardGui extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82))
             .addGroup(jPanel34Layout.createSequentialGroup()
-                .addComponent(jButton34)
+                .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton34)
+                    .addComponent(jbNewGame))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel34Layout.setVerticalGroup(
@@ -630,7 +645,9 @@ public class BoardGui extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(49, 49, 49)
+                .addComponent(jbNewGame)
+                .addGap(18, 18, 18)
                 .addComponent(jButton34)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -681,6 +698,8 @@ String hold2 = "";
 // setPieces();
 
 Board orgBoard = new Board();
+Intel intel = new Intel();
+MainFrame mainFrame = new MainFrame();
 
 public void setPieces(){
     
@@ -729,7 +748,7 @@ public void setPieces(){
 
     private void g7ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int g7r = 7;
-       final int g7c = 8;
+       final int g7c = 6;
        label = "g7";
        SelectGui select = new SelectGui(); 
        
@@ -746,6 +765,13 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+     try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
+	   
 	   check = true;
        }
        // g7.setText("F");
@@ -754,7 +780,7 @@ public void setPieces(){
 
     private void a5ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int a5r = 5;
-       final int a5c = 1;
+       final int a5c = 0;
        label = "a5";
        SelectGui select = new SelectGui(); 
        if(check){
@@ -770,6 +796,12 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	setPieces();
 	   check = true;
 	   
        }
@@ -780,7 +812,7 @@ public void setPieces(){
     private void b0ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        
 	final int b0r = 0;
-       final int b0c = 0;
+       final int b0c = 3;
        label = "b0";
        SelectGui select = new SelectGui(); 
        
@@ -797,6 +829,12 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+       setPieces();
 	   check = true;
        }
     }                                  
@@ -820,13 +858,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+       setPieces();
 	   check = true;
        }
     }                                  
 
     private void f0ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int f0r = 0;
-       final int f0c = 4;
+       final int f0c = 5;
        label = "f0";
        SelectGui select = new SelectGui(); 
        
@@ -843,13 +887,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+	  try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	  setPieces();
 	   check = true;
        }
     }                                  
 
     private void h0ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int h0r = 0;
-       final int h0c = 6;
+       final int h0c = 7;
        label = "h0";
        SelectGui select = new SelectGui(); 
        
@@ -861,13 +911,14 @@ public void setPieces(){
        else if(!check){
 	  ir = h0r;
           ic = h0c;
+	  setPieces();
 	   check = true;
        }
     }                                  
 
     private void a1ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int a1r = 1;
-       final int a1c = 1;
+       final int a1c = 0;
        label = "b1";
        SelectGui select = new SelectGui(); 
        
@@ -884,13 +935,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+	  try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	  setPieces();
 	   check = true;
        }
     }                                  
 
     private void c1ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int c1r = 1;
-       final int c1c = 3;
+       final int c1c = 2;
        label = "c1";
        SelectGui select = new SelectGui(); 
        
@@ -907,13 +964,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+	   try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void e1ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int e1r = 1;
-       final int e1c = 5;
+       final int e1c = 4;
        label = "e1";
        SelectGui select = new SelectGui(); 
        
@@ -930,13 +993,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void g1ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int g1r = 1;
-       final int g1c = 7;
+       final int g1c = 6;
        label = "g1";
        SelectGui select = new SelectGui(); 
        
@@ -953,13 +1022,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void b2ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int b2r = 2;
-       final int b2c = 0;
+       final int b2c = 1;
        label = "b2";
        SelectGui select = new SelectGui(); 
        
@@ -976,13 +1051,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void d2ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int d2r = 2;
-       final int d2c = 2;
+       final int d2c = 3;
        label = "d2";
        SelectGui select = new SelectGui(); 
        
@@ -999,13 +1080,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void f2ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int f2r = 2;
-       final int f2c = 4;
+       final int f2c = 5;
        label = "f2";
        SelectGui select = new SelectGui(); 
        
@@ -1022,13 +1109,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void h2ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int h2r = 2;
-       final int h2c = 6;
+       final int h2c = 7;
        label = "h2";
        SelectGui select = new SelectGui(); 
        
@@ -1045,13 +1138,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void a3ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int a3r = 3;
-       final int a3c = 1;
+       final int a3c = 0;
        label = "a3";
        SelectGui select = new SelectGui(); 
        
@@ -1068,13 +1167,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void c3ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int c3r = 3;
-       final int c3c = 3;
+       final int c3c = 2;
        label = "c3";
        SelectGui select = new SelectGui(); 
        
@@ -1091,13 +1196,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void e3ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int e3r = 3;
-       final int e3c = 5;
+       final int e3c = 4;
        label = "e3";
        SelectGui select = new SelectGui(); 
        
@@ -1114,13 +1225,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void g3ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int g3r = 3;
-       final int g3c = 7;
+       final int g3c = 6;
        label = "g3";
        SelectGui select = new SelectGui(); 
        
@@ -1137,13 +1254,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
-	   check = true;
+	try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }   
+       setPieces();
+       check = true;
        }
     }                                  
 
     private void b4ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int b4r = 4;
-       final int b4c = 0;
+       final int b4c = 1;
        label = "b4";
        SelectGui select = new SelectGui(); 
        
@@ -1160,13 +1283,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void d4ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int d4r = 4;
-       final int d4c = 2;
+       final int d4c = 3;
        label = "d4";
        SelectGui select = new SelectGui(); 
        
@@ -1183,13 +1312,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void f4ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int f4r = 4;
-       final int f4c = 4;
+       final int f4c = 5;
        label = "f4";
        SelectGui select = new SelectGui(); 
        
@@ -1206,13 +1341,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void h4ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int h4r = 4;
-       final int h4c = 6;
+       final int h4c = 7;
        label = "h4";
        SelectGui select = new SelectGui(); 
        
@@ -1229,13 +1370,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
-	   check = true;
+	try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }   
+       setPieces();
+       check = true;
        }
     }                                  
 
     private void c5ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int c5r = 5;
-       final int c5c = 3;
+       final int c5c = 2;
        label = "c5";
        SelectGui select = new SelectGui(); 
        
@@ -1252,13 +1399,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void e5ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int e5r = 5;
-       final int e5c = 5;
+       final int e5c = 4;
        label = "e5";
        SelectGui select = new SelectGui(); 
        
@@ -1275,13 +1428,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void g5ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int g5r = 5;
-       final int g5c = 7;
+       final int g5c = 6;
        label = "g5";
        SelectGui select = new SelectGui(); 
        
@@ -1298,13 +1457,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void b6ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int b6r = 6;
-       final int b6c = 0;
+       final int b6c = 1;
        label = "b6";
        SelectGui select = new SelectGui(); 
        
@@ -1321,13 +1486,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void d6ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int d6r = 6;
-       final int d6c = 2;
+       final int d6c = 3;
        label = "d6";
        SelectGui select = new SelectGui(); 
        
@@ -1344,13 +1515,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void f6ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int f6r = 6;
-       final int f6c = 4;
+       final int f6c = 5;
        label = "f6";
        SelectGui select = new SelectGui(); 
        
@@ -1367,13 +1544,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void h6ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int h6r = 6;
-       final int h6c = 6;
+       final int h6c = 7;
        label = "h6";
        SelectGui select = new SelectGui(); 
        
@@ -1390,13 +1573,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void a7ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int a7r = 7;
-       final int a7c = 1;
+       final int a7c = 0;
        label = "a7";
        SelectGui select = new SelectGui(); 
        
@@ -1413,13 +1602,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void c7ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int c7r = 7;
-       final int c7c = 3;
+       final int c7c = 2;
        label = "c7";
 
        SelectGui select = new SelectGui(); 
@@ -1437,13 +1632,19 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
 
     private void e7ActionPerformed(java.awt.event.ActionEvent evt) {                                   
        final int e7r = 7;
-       final int e7c = 5;
+       final int e7c = 4;
        label = "e7";
 
        SelectGui select = new SelectGui(); 
@@ -1461,9 +1662,24 @@ public void setPieces(){
     } catch (IntelException ex) { 
 	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
     }
+       try {
+	   intel.run();
+    } catch (IntelException ex) { 
+	Logger.getLogger(BoardGui.class.getName()).log(Level.SEVERE, null, ex);
+    }
+	   setPieces();
 	   check = true;
        }
     }                                  
+
+    private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+	dispose();	        // TODO add your handling code here:
+    }                                         
+
+    private void jbNewGameActionPerformed(java.awt.event.ActionEvent evt) {                                          
+	mainFrame.setVisible(true); 
+	dispose();// TODO add your handling code here:
+    }                                         
 
     /**
      * @param args the command line arguments
@@ -1539,5 +1755,6 @@ public void setPieces(){
     private javax.swing.JPanel jPanel34;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton jbNewGame;
     // End of variables declaration                   
 }
